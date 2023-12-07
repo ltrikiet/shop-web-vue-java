@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 
 import com.example.server.entity.Category;
 import com.example.server.service.CategoryService;
-import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/api/v1/category")

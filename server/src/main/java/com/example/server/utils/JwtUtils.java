@@ -11,7 +11,6 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Component;
 
-import java.lang.reflect.Array;
 import java.security.Key;
 import java.util.*;
 

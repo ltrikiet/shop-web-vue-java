@@ -1,7 +1,5 @@
 package com.example.server.payload.request;
 
-import java.util.Set;
-
 public class SignUpRequest {
     private String fullName;
     private String email;

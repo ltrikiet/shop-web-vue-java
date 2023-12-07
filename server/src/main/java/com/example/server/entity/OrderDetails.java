@@ -38,7 +38,6 @@ public class OrderDetails {
 
     public OrderDetails(Product product, Order order, Float price, Integer quantity, Float discount,
             Float total, Date createdAt, Date updatedAt) {
-        this.id = id;
         this.product = product;
         this.order = order;
         this.price = price;
