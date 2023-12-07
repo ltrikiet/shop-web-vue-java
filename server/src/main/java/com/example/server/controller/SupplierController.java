@@ -34,12 +34,12 @@ public class SupplierController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Supplier> updateSupplier(@PathVariable Long id, @RequestBody Supplier supplier) {
+    public ResponseEntity<Supplier> updateSupplier(@PathVariable("id") Long id, @RequestBody Supplier supplier) {
         return new ResponseEntity<>(supplierService.updateSupplier(id, supplier), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteSupplier(@PathVariable Long id) {
+    public ResponseEntity<String> deleteSupplier(@PathVariable("id") Long id) {
         supplierService.deleteSupplier(id);
         return new ResponseEntity<>("Delete successful!", HttpStatus.OK);
     }
