@@ -1,5 +1,12 @@
 <script setup lang="ts">
 import { Swiper, SwiperSlide } from 'swiper/vue';
+import type { CategoryResponse } from '@/services/category/types';
+import AsyncImg from '@/components/async-img/AsyncImg.vue';
+
+interface HomeCategoryCardsProps {
+  categories: CategoryResponse[];
+}
+defineProps<HomeCategoryCardsProps>();
 </script>
 <template>
   <swiper
@@ -14,42 +21,19 @@ import { Swiper, SwiperSlide } from 'swiper/vue';
       prevEl: '.custom-coffee-cards-prev'
     }"
   >
-    <swiper-slide v-for="n of 10" :key="n">
+    <swiper-slide v-for="category of categories" :key="category.id">
       <div class="home-coffee-cards__slide">
         <div class="home-coffee-cards__slide-left">
           <div>
-            <h4 class="text-2xl font-light tracking-wider">Pumpkin Pie Latte</h4>
-            <p>Seasonal "Beverage</p>
+            <h4 class="text-2xl font-light tracking-wider">{{ category.fullName }}</h4>
           </div>
-          Image by
-
-          <v-img src="./src/assets/images/DrinkModule_PumpkinPieLatte_750x.png" />
-          <p class="text-xs font-medium mb-2">12 oz Ceramic Cup</p>
-          <ul>
-            <li>
-              <v-icon icon="mdi-square-medium-outline" />
-              <p>8.5 oz Steamed Milk</p>
-            </li>
-            <li>
-              <v-icon icon="mdi-square-medium-outline" />
-              <p>40 grams Pumpkin Pie Base</p>
-            </li>
-            <li>
-              <v-icon icon="mdi-square-medium-outline" />
-              <p>2 oz Espresso</p>
-            </li>
-          </ul>
+          <div>
+            <async-img :path="category.picture" />
+          </div>
         </div>
         <div class="home-coffee-cards__slide-right">
-          <p class="mb-3">
-            Add about 40 grams of Pumpkin Pie Base directly into a 12 oz ceramic cup with a double shot of espresso.
-            Steam milk and pour beautiful latte art. Garnish with graham cracker crumble.
-          </p>
-          <p>
-            Add about 40 grams of Pumpkin Pie Base directly into a 12 oz ceramic cup with a double shot of espresso.
-            Steam milk and pour beautiful latte art. Garnish with graham cracker crumble.
-          </p>
-          <v-btn variant="plain" appendIcon="mdi-chevron-right">TRY ONE TODAY</v-btn>
+          <p>{{ category.description }}</p>
+          <v-btn variant="plain" appendIcon="mdi-chevron-right">CHECK PRODUCTS</v-btn>
         </div>
       </div>
     </swiper-slide>

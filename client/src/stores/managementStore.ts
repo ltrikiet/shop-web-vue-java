@@ -8,7 +8,7 @@ import type { UserRequest, UserResponse } from '@/services/user/types';
 
 export const useManagementStore = defineStore('managementStore', () => {
   const users = ref<UserResponse[]>([]);
-  const categorys = ref<CategoryResponse[]>([]);
+  const categories = ref<CategoryResponse[]>([]);
   const orders = ref<any[]>([]);
   const orderDetails = ref<Object>({});
   const products = ref<ProductResponse[]>([]);
@@ -52,10 +52,10 @@ export const useManagementStore = defineStore('managementStore', () => {
     }
   };
 
-  const getCategorys = async (): Promise<void> => {
+  const getCategories = async (): Promise<void> => {
     try {
       const { data } = await API.category.getCategorys();
-      categorys.value = data;
+      categories.value = data;
     } catch (error) {
       console.log(error);
     }
@@ -64,7 +64,7 @@ export const useManagementStore = defineStore('managementStore', () => {
   const createCategory = async (inputForm: CategoryRequest): Promise<void> => {
     try {
       const { data } = await API.category.createCategory(inputForm);
-      categorys.value.push(data);
+      categories.value.push(data);
     } catch (error) {
       console.log(error);
     }
@@ -73,8 +73,8 @@ export const useManagementStore = defineStore('managementStore', () => {
   const updateCategory = async (id: number, inputForm: CategoryRequest): Promise<void> => {
     try {
       const { data } = await API.category.updateCategory(id, inputForm);
-      const index = categorys.value.findIndex((item) => item.id === id);
-      categorys.value.splice(index, 1, data);
+      const index = categories.value.findIndex((item) => item.id === id);
+      categories.value.splice(index, 1, data);
     } catch (error) {
       console.log(error);
     }
@@ -83,8 +83,8 @@ export const useManagementStore = defineStore('managementStore', () => {
   const deleteCategory = async (id: number): Promise<void> => {
     try {
       await API.category.deleteCategory(id);
-      const index = categorys.value.findIndex((item) => item.id === id);
-      categorys.value[index].active = false;
+      const index = categories.value.findIndex((item) => item.id === id);
+      categories.value[index].active = false;
     } catch (error) {
       console.log(error);
     }
@@ -220,9 +220,9 @@ export const useManagementStore = defineStore('managementStore', () => {
     createUser,
     updateUser,
     deleteUser,
-    // Categorys
-    categorys,
-    getCategorys,
+    // Categories
+    categories,
+    getCategories,
     createCategory,
     updateCategory,
     deleteCategory,

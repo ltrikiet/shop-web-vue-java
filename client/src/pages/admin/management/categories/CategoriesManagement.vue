@@ -9,9 +9,9 @@ import useManagement, { ManagementType } from '@/hooks/useManagement';
 import { formField, tableHeaders, validationSchema } from './constant';
 
 const managementStore = useManagementStore();
-const { categorys } = storeToRefs(managementStore);
+const { categories } = storeToRefs(managementStore);
 
-onMounted(async () => await managementStore.getCategorys());
+onMounted(async () => await managementStore.getCategories());
 const {
   showDialog,
   isEdit,
@@ -28,7 +28,7 @@ const {
     <my-table-data
       title="Categories Management"
       add-button-title="Add category"
-      :data="categorys"
+      :data="categories"
       :table-headers="tableHeaders"
       :handle-click-add="handleClickAdd"
       :handle-click-edit="handleClickEdit"

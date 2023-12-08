@@ -7,5 +7,5 @@ import com.example.server.entity.Supplier;
 
 @Repository
 public interface SupplierRepository extends JpaRepository<Supplier, Long> {
-
+    Supplier findByFullName(String fullName);
 }

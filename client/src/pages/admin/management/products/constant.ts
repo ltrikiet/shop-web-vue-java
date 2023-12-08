@@ -87,11 +87,12 @@ export const formField = (supplierList: SupplierResponse[], categoryList: Catego
 export const tableHeaders: DataTableHeader[] = [
   { title: 'Id', key: 'id' },
   { title: 'Full name', key: 'fullName' },
-  { title: 'Description', key: 'description' },
+  // { title: 'Description', key: 'description' },
   { title: 'Picture', key: 'picture' },
   { title: 'Supplier', key: 'supplier' },
   { title: 'Category', key: 'category' },
   { title: 'Price', key: 'price' },
+  { title: 'Stocks', key: 'stocks' },
   { title: 'Notes', key: 'notes' },
   { title: 'Actice', key: 'active' },
   { title: 'Created At', key: 'createdAt' },

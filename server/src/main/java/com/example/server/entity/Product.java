@@ -15,7 +15,7 @@ public class Product {
     @Column(nullable = false)
     private String fullName;
 
-    @Column(nullable = false, length = 500)
+    @Column(nullable = false, length = 15000)
     private String description;
 
     private String picture;

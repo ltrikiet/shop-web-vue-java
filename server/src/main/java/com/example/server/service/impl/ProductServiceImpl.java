@@ -21,6 +21,11 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public List<Product> getLatestFiveProducts() {
+        return productRepository.findTop5ByOrderByCreatedAtAsc();
+    }
+
+    @Override
     public Product createProduct(Product product) {
         return productRepository.save(product);
     }

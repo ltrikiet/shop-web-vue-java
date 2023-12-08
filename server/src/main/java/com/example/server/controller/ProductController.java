@@ -28,6 +28,11 @@ public class ProductController {
         return new ResponseEntity<>(productService.getAllProduct(), HttpStatus.OK);
     }
 
+    @GetMapping("/latest")
+    public ResponseEntity<List<Product>> getLatestTenProducts() {
+        return new ResponseEntity<>(productService.getLatestFiveProducts(), HttpStatus.OK);
+    }
+
     @PostMapping
     public ResponseEntity<Product> createProduct(@RequestBody Product product) {
         return new ResponseEntity<>(productService.createProduct(product), HttpStatus.CREATED);

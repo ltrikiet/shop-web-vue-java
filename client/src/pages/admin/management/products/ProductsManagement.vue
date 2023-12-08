@@ -9,12 +9,12 @@ import { useManagementStore } from '@/stores/managementStore';
 import { formField, validationSchema, tableHeaders } from './constant';
 
 const managementStore = useManagementStore();
-const { categorys, suppliers, products } = storeToRefs(managementStore);
+const { categories, suppliers, products } = storeToRefs(managementStore);
 
 onMounted(async () => {
   await managementStore.getProducts();
   await managementStore.getSuppliers();
-  await managementStore.getCategorys();
+  await managementStore.getCategories();
 });
 
 const {
@@ -42,7 +42,7 @@ const {
     <my-dialog-form
       :title="'Product Form'"
       :image-key-for-preview-on-edit="'picture'"
-      :form-field="formField(suppliers, categorys)"
+      :form-field="formField(suppliers, categories)"
       :validation-schema="validationSchema"
       :is-edit="isEdit"
       :initial-value="selectedItem"

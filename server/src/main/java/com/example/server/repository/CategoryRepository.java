@@ -7,5 +7,5 @@ import com.example.server.entity.Category;
 
 @Repository
 public interface CategoryRepository extends JpaRepository<Category, Long> {
-
+    Category findByFullName(String fullName);
 }
