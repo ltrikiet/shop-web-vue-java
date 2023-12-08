@@ -60,7 +60,7 @@ public class InitialDataToDB implements ApplicationRunner {
             new Category(
                 "Pc",
                 "A personal computer (PC) is a multi-purpose microcomputer whose size, capabilities, and price make it feasible for individual use. Personal computers are intended to be operated directly by an end user, rather than by a computer expert or technician.",
-                null,
+                "uploads\\categories\\Pc\\Pc.jpg",
                 true,
                 new Date(),
                 new Date())
@@ -69,7 +69,7 @@ public class InitialDataToDB implements ApplicationRunner {
             new Category(
                 "Laptop",
                 "A laptop, sometimes called a notebook computer by manufacturers, is a battery- or AC-powered personal computer (PC) smaller than a briefcase. A laptop can be easily transported and used in temporary spaces such as on airplanes, in libraries, temporary offices and at meetings.",
-                null,
+                "uploads\\categories\\Laptop\\Laptop.jpg",
                 true,
                 new Date(),
                 new Date())
@@ -78,25 +78,25 @@ public class InitialDataToDB implements ApplicationRunner {
             new Category(
                 "Monitor",
                 "A computer monitor is an output device that displays information in pictorial or textual form. A discrete monitor comprises a visual display, support electronics, power supply, housing, electrical connectors, and external user controls.",
-                null,
+                "uploads\\categories\\Monitor\\Monitor.jpg",
                 true,
                 new Date(),
                 new Date())
         );
         categoryRepository.save(
             new Category(
-                "Accessory",
+                "Accessories",
                 "Computer accessories are also known as computer peripherals and can include printers and scanners and storage devices.",
-                null,
+                "uploads\\categories\\Accessories\\Accessories.jpg",
                 true,
                 new Date(),
                 new Date())
         );
         categoryRepository.save(
             new Category(
-                "Component",
+                "Components",
                 "Computer hardware includes the physical parts of a computer, such as the case, central processing unit (CPU), random access memory (RAM), monitor, mouse, keyboard, computer data storage, graphics card, sound card, speakers and motherboard.",
-                null,
+                "uploads\\categories\\Components\\Components.jpg",
                 true,
                 new Date(),
                 new Date())
@@ -105,7 +105,7 @@ public class InitialDataToDB implements ApplicationRunner {
             new Category(
                 "Table/Chair",
                 "A gaming table/chair is a type of chair marketed towards gamers",
-                null,
+                "uploads\\categories\\TableChair\\TableChair.jpg",
                 true,
                 new Date(),
                 new Date())
@@ -114,7 +114,7 @@ public class InitialDataToDB implements ApplicationRunner {
             new Category(
                 "Software",
                 "Software is a set of computer programs and associated documentation and data. This is in contrast to hardware, from which the system is built and which actually performs the work.",
-                null,
+                "uploads\\categories\\Software\\Software.jpg",
                 true,
                 new Date(),
                 new Date())
@@ -129,7 +129,7 @@ public class InitialDataToDB implements ApplicationRunner {
                 null,
                 "mockAsus@gmail.com",
                 "https://www.asus.com/",
-                null,
+                "uploads\\suppliers\\Asus\\Asus.png",
                 new Date(),
                 new Date())
         );
@@ -142,7 +142,7 @@ public class InitialDataToDB implements ApplicationRunner {
                 null,
                 "mockAcer@gmail.com",
                 "https://www.acer.com/",
-                null,
+                "uploads\\suppliers\\Acer\\Acer.png",
                 new Date(),
                 new Date())
         );
@@ -155,7 +155,7 @@ public class InitialDataToDB implements ApplicationRunner {
                 null,
                 "mockLenovo@gmail.com",
                 "https://www.lenovo.com/",
-                null,
+                "uploads\\suppliers\\Lenovo\\Lenovo.png",
                 new Date(),
                 new Date())
         );
@@ -168,7 +168,7 @@ public class InitialDataToDB implements ApplicationRunner {
                 null,
                 "mockMSI@gmail.com",
                 "https://www.msi.com/",
-                null,
+                "uploads\\suppliers\\MSI\\MSI.png",
                 new Date(),
                 new Date())
         );
@@ -181,7 +181,7 @@ public class InitialDataToDB implements ApplicationRunner {
                 null,
                 "mockGigabyte@gmail.com",
                 "https://www.gigabyte.com/",
-                null,
+                "uploads\\suppliers\\Gigabyte\\Gigabyte.png",
                 new Date(),
                 new Date())
         );
@@ -194,7 +194,7 @@ public class InitialDataToDB implements ApplicationRunner {
                 null,
                 "mockHP@gmail.com",
                 "https://www.hp.com/",
-                null,
+                "uploads\\suppliers\\HP\\HP.png",
                 new Date(),
                 new Date())
         );

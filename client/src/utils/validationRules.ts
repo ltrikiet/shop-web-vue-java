@@ -63,15 +63,13 @@ export const discountRule = (discount: number, msg?: string) => {
 };
 
 export const imageRule = (image: File) => {
-  if (!image) {
-    return 'Must provider image.';
-  }
+  if (image) {
+    const fileType = image['type'];
+    const validImageTypes = /image\/\w*/;
 
-  const fileType = image['type'];
-  const validImageTypes = /image\/\w*/;
-
-  if (!validImageTypes.test(fileType)) {
-    return 'Should be image file.';
+    if (!validImageTypes.test(fileType)) {
+      return 'Should be image file.';
+    }
   }
 
   return !image || image.size < 2000000 || 'Image size should be less than 2 MB!';

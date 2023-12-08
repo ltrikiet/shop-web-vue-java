@@ -8,7 +8,7 @@ export default {
         requiredAuthorization: true,
         roles: ['admin']
       },
-      component: () => import('@/components/page/admin/home/AdminHome.vue')
+      component: () => import('@/pages/admin/home/AdminHome.vue')
     },
     {
       path: 'management',
@@ -21,7 +21,7 @@ export default {
             requiredAuthorization: true,
             roles: ['admin']
           },
-          component: () => import('@/components/page/admin/management/users/UsersManagement.vue')
+          component: () => import('@/pages/admin/management/users/UsersManagement.vue')
         },
         {
           path: 'products',
@@ -30,7 +30,7 @@ export default {
             requiredAuthorization: true,
             roles: ['admin']
           },
-          component: () => import('@/components/page/admin/management/products/ProductsManagement.vue')
+          component: () => import('@/pages/admin/management/products/ProductsManagement.vue')
         },
         {
           path: 'orders',
@@ -39,7 +39,7 @@ export default {
             requiredAuthorization: true,
             roles: ['admin']
           },
-          component: () => import('@/components/page/admin/management/orders/OrdersManagement.vue')
+          component: () => import('@/pages/admin/management/orders/OrdersManagement.vue')
         },
         {
           path: 'suppliers',
@@ -48,16 +48,16 @@ export default {
             requiredAuthorization: true,
             roles: ['admin']
           },
-          component: () => import('@/components/page/admin/management/suppliers/SuppliersManagement.vue')
+          component: () => import('@/pages/admin/management/suppliers/SuppliersManagement.vue')
         },
         {
-          path: 'categorys',
-          name: 'categorys-management',
+          path: 'categories',
+          name: 'categories-management',
           meta: {
             requiredAuthorization: true,
             roles: ['admin']
           },
-          component: () => import('@/components/page/admin/management/categorys/CategorysManagement.vue')
+          component: () => import('@/pages/admin/management/categories/CategoriesManagement.vue')
         }
       ]
     }
