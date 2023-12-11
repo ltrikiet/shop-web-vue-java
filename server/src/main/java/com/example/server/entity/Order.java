@@ -21,7 +21,7 @@ public class Order {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "customer_id")
+    @JoinColumn(name = "user_id")
     private User user;
 
     private String paymentMethod;
@@ -44,8 +44,10 @@ public class Order {
     public Order() {
     }
 
-    public Order(User user, String paymentMethod, Date requiredDate, Date paymentDate,
+    public Order(Long id, User user, String paymentMethod, Date requiredDate, Date paymentDate,
                  Boolean paid, Boolean deleted, Date createdAt, Date updatedAt) {
+        this.id = id;
+        this.user = user;
         this.paymentMethod = paymentMethod;
         this.requiredDate = requiredDate;
         this.paymentDate = paymentDate;
@@ -62,6 +64,10 @@ public class Order {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public User getUser() { return user; }
+
+    public void setUser(User user) { this.user = user; }
 
     public String getPaymentMethod() {
         return paymentMethod;

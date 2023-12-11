@@ -29,23 +29,19 @@ public class OrderDetails {
     @Column(nullable = false)
     private Float total;
 
-    private Date createdAt;
-
-    private Date updatedAt;
 
     public OrderDetails() {
     }
 
-    public OrderDetails(Product product, Order order, Float price, Integer quantity, Float discount,
-            Float total, Date createdAt, Date updatedAt) {
+    public OrderDetails(Long id, Product product, Order order, Float price, Integer quantity, Float discount,
+            Float total) {
+        this.id = id;
         this.product = product;
         this.order = order;
         this.price = price;
         this.quantity = quantity;
         this.discount = discount;
         this.total = total;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
     }
 
     public Long getId() {
@@ -104,19 +100,5 @@ public class OrderDetails {
         this.total = total;
     }
 
-    public Date getCreatedAt() {
-        return createdAt;
-    }
 
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Date getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
-    }
 }

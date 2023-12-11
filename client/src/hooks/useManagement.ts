@@ -1,8 +1,12 @@
 import { ref } from 'vue';
 import { getCurrentISOString } from '@/helpers/datetime.helpler';
 import { API } from '@/services';
-import { useManagementStore } from '@/stores/managementStore';
 import { removeSpecialSympolForPath } from '@/helpers/string.helper';
+import { useUsersStore } from '@/stores/usersStore';
+import { useSuppliersStore } from '@/stores/suppliersStore';
+import { useOrdersStore } from '@/stores/ordersStore';
+import { useProductsStore } from '@/stores/productsStore';
+import { useCategoriesStore } from '@/stores/categoriesStore';
 
 export enum ManagementType {
   CATEGORIES = 'categories',
@@ -12,9 +16,13 @@ export enum ManagementType {
   SUPPLIERS = 'suppliers'
 }
 
-const IMAGE_KEY = 'picture';
-const managementStore = useManagementStore();
+const usersStore = useUsersStore();
+const suppliersStore = useSuppliersStore();
+const ordersStores = useOrdersStore();
+const productsStore = useProductsStore();
+const categoriesStore = useCategoriesStore();
 
+const IMAGE_KEY = 'picture';
 const addBasicDataToCreate = (props: any) => ({
   ...props,
   createdAt: getCurrentISOString(),
@@ -44,7 +52,7 @@ const handleCategorySubmit = (
       inputForm,
       `${ManagementType.CATEGORIES}/${removeSpecialSympolForPath(inputForm.fullName)}`
     ).then((result) => {
-      managementStore.updateCategory(selectedItem.id, { ...addBasicDataToUpdate(inputForm), picture: result?.data });
+      categoriesStore.updateCategory(selectedItem.id, { ...addBasicDataToUpdate(inputForm), picture: result?.data });
     });
   }
 
@@ -53,15 +61,15 @@ const handleCategorySubmit = (
       inputForm,
       `${ManagementType.CATEGORIES}/${removeSpecialSympolForPath(inputForm.fullName)}`
     ).then((result) => {
-      managementStore.createCategory({ ...addBasicDataToCreate(inputForm), picture: result?.data });
+      categoriesStore.createCategory({ ...addBasicDataToCreate(inputForm), picture: result?.data });
     });
   }
 
   if (isEdit) {
-    return managementStore.updateCategory(selectedItem.id, addBasicDataToUpdate(inputForm));
+    return categoriesStore.updateCategory(selectedItem.id, addBasicDataToUpdate(inputForm));
   }
 
-  return managementStore.createCategory(addBasicDataToCreate(inputForm));
+  return categoriesStore.createCategory(addBasicDataToCreate(inputForm));
 };
 
 const handleCustomerSubmit = (
@@ -70,9 +78,9 @@ const handleCustomerSubmit = (
   inputForm: { [key: string]: any }
 ) => {
   if (isEdit) {
-    return managementStore.updateUser(selectedItem.id, addBasicDataToUpdate(inputForm));
+    return usersStore.updateUser(selectedItem.id, addBasicDataToUpdate(inputForm));
   }
-  return managementStore.createUser(addBasicDataToCreate(inputForm));
+  return usersStore.createUser(addBasicDataToCreate(inputForm));
 };
 
 const handleProductSumbit = (
@@ -85,7 +93,7 @@ const handleProductSumbit = (
       inputForm,
       `${ManagementType.PRODUCTS}/${removeSpecialSympolForPath(inputForm.fullName)}`
     ).then((result) => {
-      managementStore.updaterProduct(selectedItem.id, { ...addBasicDataToUpdate(inputForm), picture: result?.data });
+      productsStore.updaterProduct(selectedItem.id, { ...addBasicDataToUpdate(inputForm), picture: result?.data });
     });
   }
 
@@ -94,15 +102,15 @@ const handleProductSumbit = (
       inputForm,
       `${ManagementType.PRODUCTS}/${removeSpecialSympolForPath(inputForm.fullName)}`
     ).then((result) => {
-      managementStore.createProduct({ ...addBasicDataToCreate(inputForm), picture: result?.data });
+      productsStore.createProduct({ ...addBasicDataToCreate(inputForm), picture: result?.data });
     });
   }
 
   if (isEdit) {
-    return managementStore.updaterProduct(selectedItem.id, addBasicDataToUpdate(inputForm));
+    return productsStore.updaterProduct(selectedItem.id, addBasicDataToUpdate(inputForm));
   }
 
-  return managementStore.createProduct(addBasicDataToCreate(inputForm));
+  return productsStore.createProduct(addBasicDataToCreate(inputForm));
 };
 
 const handleSupplierSubmit = (
@@ -115,7 +123,7 @@ const handleSupplierSubmit = (
       inputForm,
       `${ManagementType.SUPPLIERS}/${removeSpecialSympolForPath(inputForm.fullName)}`
     ).then((result) => {
-      managementStore.updaterSupplier(selectedItem.id, { ...addBasicDataToUpdate(inputForm), picture: result?.data });
+      suppliersStore.updaterSupplier(selectedItem.id, { ...addBasicDataToUpdate(inputForm), picture: result?.data });
     });
   }
 
@@ -124,15 +132,15 @@ const handleSupplierSubmit = (
       inputForm,
       `${ManagementType.SUPPLIERS}/${removeSpecialSympolForPath(inputForm.fullName)}`
     ).then((result) => {
-      managementStore.createSupplier({ ...addBasicDataToCreate(inputForm), picture: result?.data });
+      suppliersStore.createSupplier({ ...addBasicDataToCreate(inputForm), picture: result?.data });
     });
   }
 
   if (isEdit) {
-    return managementStore.updaterSupplier(selectedItem.id, addBasicDataToUpdate(inputForm));
+    return suppliersStore.updaterSupplier(selectedItem.id, addBasicDataToUpdate(inputForm));
   }
 
-  return managementStore.createSupplier(addBasicDataToCreate(inputForm));
+  return suppliersStore.createSupplier(addBasicDataToCreate(inputForm));
 };
 
 const useManagement = (type: ManagementType) => {
@@ -153,19 +161,19 @@ const useManagement = (type: ManagementType) => {
   const handleClickDelete = (props: any) => {
     switch (type) {
       case ManagementType.CATEGORIES:
-        managementStore.deleteCategory(props.item.id);
+        categoriesStore.deleteCategory(props.item.id);
         break;
       case ManagementType.USERS:
-        managementStore.deleteUser(props.item.id);
+        usersStore.deleteUser(props.item.id);
         break;
       case ManagementType.ORDERS:
-        managementStore.deleteOrder(props.item.id);
+        ordersStores.deleteOrder(props.item.id);
         break;
       case ManagementType.PRODUCTS:
-        managementStore.deleteProduct(props.item.id);
+        productsStore.deleteProduct(props.item.id);
         break;
       case ManagementType.SUPPLIERS:
-        managementStore.deleteSupplier(props.item.id);
+        suppliersStore.deleteSupplier(props.item.id);
         break;
     }
   };
@@ -188,7 +196,7 @@ const useManagement = (type: ManagementType) => {
 
       case ManagementType.ORDERS:
         if (isEdit.value) {
-          managementStore.updateOrder(selectedItem.value.id, addBasicDataToUpdate(props));
+          ordersStores.updateOrder(selectedItem.value.id, addBasicDataToUpdate(props));
         }
         break;
 

@@ -17,22 +17,27 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: () => import('@/pages/home/home/HomePage.vue')
+      component: () => import('@/pages/home/HomePage.vue')
     },
     {
       path: '/product-list',
       name: 'product-list',
-      component: () => import('@/pages/home/product-list/ProductList.vue')
+      component: () => import('@/pages/product-list/ProductList.vue')
     },
     {
-      path: '/product-details',
+      path: '/product-details/:id',
       name: 'product-details',
-      component: () => import('@/pages/home/product-details/ProductDetails.vue')
+      component: () => import('@/pages/product-details/ProductDetails.vue')
     },
     {
       path: '/login',
       name: 'login',
       component: () => import('@/pages/login/UserLogin.vue')
+    },
+    {
+      path: '/payment',
+      name: 'payment',
+      component: () => import('@/pages/payment/PaymentPage.vue')
     },
     { ...adminRoutes },
     // catch all redirect to 404 page
@@ -41,7 +46,10 @@ const router = createRouter({
       name: 'page-not-found',
       component: () => import('@/pages/page-not-found/PageNotFound.vue')
     }
-  ]
+  ],
+  scrollBehavior() {
+    return { top: 0, behavior: 'smooth' };
+  }
 });
 
 router.beforeEach((to) => {

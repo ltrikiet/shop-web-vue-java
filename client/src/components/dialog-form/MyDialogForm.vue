@@ -116,7 +116,6 @@ onUpdated(async () => {
 
                   <template v-if="item.inputType === FormInputType.RICH_TEXT_EDITOR">
                     <vee-validation-field :name="item.name" v-slot="{ value, handleChange }">
-                      {{ value }}
                       <rich-text-editor :handleContentChange="handleChange" :content="value" />
                     </vee-validation-field>
                   </template>

@@ -76,6 +76,7 @@ public class WebSecurityConfig  {
                 .requestMatchers(HttpMethod.POST, "/api/v1/user").permitAll()
                 // Our private endpoints
                 .requestMatchers(HttpMethod.PUT, "api/v1/user/**").hasAnyAuthority("ROLE_USER", "ROLE_ADMIN")
+                .requestMatchers(HttpMethod.POST, "/api/v1/order").hasAnyAuthority("ROLE_USER", "ROLE_ADMIN")
                 .anyRequest().hasAuthority("ROLE_ADMIN")
         );
 

@@ -1,13 +1,17 @@
 <script setup lang="ts">
-import HomeNavbar from './home-navbar/HomeNavbar.vue';
-import HomeFooter from './home-footer/HomeFooter.vue';
+import HomeNavbar from './HomeNavbar.vue';
+import HomeFooter from './HomeFooter.vue';
+import HomeCart from './HomeCart.vue';
 </script>
 <template>
-  <div class="flex flex-col w-full">
+  <v-app>
     <home-navbar />
-    <v-main class="mt-32">
+    <home-cart />
+
+    <v-main class="flex flex-col">
       <slot />
     </v-main>
+
     <home-footer />
-  </div>
+  </v-app>
 </template>

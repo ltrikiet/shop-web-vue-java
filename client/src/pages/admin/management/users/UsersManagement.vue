@@ -5,14 +5,14 @@ import MyTableData from '@/components/table-data/MyTableData.vue';
 import MyDialogForm from '@/components/dialog-form/MyDialogForm.vue';
 import AdminTemplate from '@/layouts/admin/AdminTemplate.vue';
 import useManagement, { ManagementType } from '@/hooks/useManagement';
-import { useManagementStore } from '@/stores/managementStore';
+import { useUsersStore } from '@/stores/usersStore';
 import { formField, tableHeaders, validationSchema } from './constant';
 
-const managementStore = useManagementStore();
-const { users } = storeToRefs(managementStore);
+const usersStore = useUsersStore();
+const { users } = storeToRefs(usersStore);
 
 onMounted(async () => {
-  await managementStore.getUsers();
+  await usersStore.getUsers();
 });
 
 const {

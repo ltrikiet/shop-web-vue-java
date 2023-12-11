@@ -1,6 +1,6 @@
 <script setup lang="ts"></script>
 <template>
-  <v-footer app class="text-center flex-column">
+  <v-footer class="text-center flex-column">
     <v-container>
       <v-row>
         <v-col cols="4" class="flex items-center justify-start">

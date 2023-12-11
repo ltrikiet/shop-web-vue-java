@@ -3,11 +3,22 @@ import { defineStore } from 'pinia';
 import { API } from '@/services';
 import router from '@/router';
 import type { SignInRequest, SignUpRequest } from '@/services/auth/types';
+import type { UserResponse } from '@/services/user/types';
 
 export const useAuthStore = defineStore('authStore', () => {
   const error = ref<string | null>(null);
   const loading = ref<boolean>(false);
   const userToken = ref<string>(sessionStorage.getItem('userToken') || '');
+  const userInfo = ref<UserResponse>();
+
+  const getUserInfoByToken = async (token: string) => {
+    try {
+      const { data } = await API.auth.getUserInfoByToken(token);
+      userInfo.value = data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const signIn = async (inputForm: SignInRequest): Promise<void> => {
     try {
@@ -38,5 +49,5 @@ export const useAuthStore = defineStore('authStore', () => {
     router.push('/');
   };
 
-  return { userToken, error, loading, signIn, signUp, logout };
+  return { userToken, userInfo, error, loading, getUserInfoByToken, signIn, signUp, logout };
 });

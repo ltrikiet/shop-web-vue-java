@@ -21,8 +21,20 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Product> getLatestFiveProducts() {
-        return productRepository.findTop5ByOrderByCreatedAtAsc();
+    public List<Product> getAllActiveProduct() {
+        return productRepository.findAllByActiveTrue();
+    }
+
+    @Override
+    public List<Product> getLatestProducts(Integer quantity) {
+        return productRepository.findTopActiveProducts(quantity);
+    }
+
+    @Override
+    public Product getProductById(Long id) {
+        return productRepository.findById(id).orElseThrow(() -> {
+            return new EmptyResultDataAccessException(1);
+        });
     }
 
     @Override

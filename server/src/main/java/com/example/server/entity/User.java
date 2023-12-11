@@ -45,8 +45,9 @@ public class User{
     public User() {
     }
 
-    public User(String fullName, String address, String city, String phone, String email, String password, Set<Role> roles, Boolean active,
+    public User(Long id, String fullName, String address, String city, String phone, String email, String password, Set<Role> roles, Boolean active,
                 Date createdAt, Date updatedAt) {
+        this.id = id;
         this.fullName = fullName;
         this.address = address;
         this.city = city;

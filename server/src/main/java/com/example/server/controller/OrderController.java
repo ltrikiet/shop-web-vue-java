@@ -1,8 +1,16 @@
 package com.example.server.controller;
 
+import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.example.server.entity.OrderDetails;
+import com.example.server.entity.Product;
+import com.example.server.entity.User;
+import com.example.server.payload.request.OrderRequest;
+import com.example.server.repository.OrderDetailsRepository;
+import com.example.server.service.ProductService;
+import com.example.server.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,14 +32,34 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private ProductService productService;
+    
+    @Autowired
+    private OrderDetailsRepository orderDetailsRepository;
+
     @GetMapping
     public ResponseEntity<List<Order>> getAllOrder() {
         return new ResponseEntity<>(orderService.getAllOrder(), HttpStatus.OK);
     }
 
     @PostMapping
-    public ResponseEntity<Order> createOrder(@RequestBody Order order) {
-        return new ResponseEntity<>(orderService.createOrder(order), HttpStatus.CREATED);
+    public ResponseEntity<?> createOrder(@RequestBody OrderRequest orderRequest) {
+        User user = userService.getUserByEmail(orderRequest.getEmail());
+        Order newOrder = orderService.createOrder(new Order(null, user, orderRequest.getPaymentMethod(), null, null,
+                false, false, new Date(), new Date()));
+
+        List<OrderDetails> orderDetailsList = orderRequest.getCartProducts().stream().map((item) -> {
+            Product product =  productService.getProductById(item.getProductId());
+            return new OrderDetails(null, product, newOrder, product.getPrice(), item.getQuantity(), null, product.getPrice() * item.getQuantity());
+        }).collect(Collectors.toList());
+
+        orderDetailsRepository.saveAll(orderDetailsList);
+
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")

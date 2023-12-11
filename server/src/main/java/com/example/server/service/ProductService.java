@@ -7,7 +7,11 @@ import com.example.server.entity.Product;
 public interface ProductService {
     List<Product> getAllProduct();
 
-    List<Product> getLatestFiveProducts();
+    List<Product> getAllActiveProduct();
+
+    List<Product> getLatestProducts(Integer quantity);
+
+    Product getProductById(Long id);
 
     Product createProduct(Product product);
 

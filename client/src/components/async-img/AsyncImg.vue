@@ -4,7 +4,7 @@ import { onUpdated } from 'vue';
 import { onMounted, ref } from 'vue';
 
 interface AsyncImgProps {
-  path: string | null;
+  path?: string;
 }
 const props = defineProps<AsyncImgProps>();
 const asyncImgSrc = ref();

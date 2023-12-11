@@ -5,16 +5,22 @@ import AdminTemplate from '@/layouts/admin/AdminTemplate.vue';
 import MyTableData from '@/components/table-data/MyTableData.vue';
 import MyDialogForm from '@/components/dialog-form/MyDialogForm.vue';
 import useManagement, { ManagementType } from '@/hooks/useManagement';
-import { useManagementStore } from '@/stores/managementStore';
+import { useProductsStore } from '@/stores/productsStore';
+import { useSuppliersStore } from '@/stores/suppliersStore';
+import { useCategoriesStore } from '@/stores/categoriesStore';
 import { formField, validationSchema, tableHeaders } from './constant';
 
-const managementStore = useManagementStore();
-const { categories, suppliers, products } = storeToRefs(managementStore);
+const productsStore = useProductsStore();
+const suppliersStore = useSuppliersStore();
+const categoriesStore = useCategoriesStore();
+const { products } = storeToRefs(productsStore);
+const { suppliers } = storeToRefs(suppliersStore);
+const { categories } = storeToRefs(categoriesStore);
 
 onMounted(async () => {
-  await managementStore.getProducts();
-  await managementStore.getSuppliers();
-  await managementStore.getCategories();
+  await productsStore.getProducts();
+  await suppliersStore.getSuppliers();
+  await categoriesStore.getCategories();
 });
 
 const {

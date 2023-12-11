@@ -4,14 +4,14 @@ import { storeToRefs } from 'pinia';
 import AdminTemplate from '@/layouts/admin/AdminTemplate.vue';
 import MyTableData from '@/components/table-data/MyTableData.vue';
 import useManagement, { ManagementType } from '@/hooks/useManagement';
-import { useManagementStore } from '@/stores/managementStore';
+import { useSuppliersStore } from '@/stores/suppliersStore';
 import MyDialogForm from '@/components/dialog-form/MyDialogForm.vue';
 import { formField, tableHeaders, validationSchema } from './constant';
 
-const managementStore = useManagementStore();
-const { suppliers } = storeToRefs(managementStore);
+const suppliersStore = useSuppliersStore();
+const { suppliers } = storeToRefs(suppliersStore);
 
-onMounted(async () => await managementStore.getSuppliers());
+onMounted(async () => await suppliersStore.getSuppliers());
 
 const {
   showDialog,

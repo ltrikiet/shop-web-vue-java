@@ -28,9 +28,19 @@ public class ProductController {
         return new ResponseEntity<>(productService.getAllProduct(), HttpStatus.OK);
     }
 
-    @GetMapping("/latest")
-    public ResponseEntity<List<Product>> getLatestTenProducts() {
-        return new ResponseEntity<>(productService.getLatestFiveProducts(), HttpStatus.OK);
+    @GetMapping("/active")
+    public ResponseEntity<List<Product>> getAllActiveProduct() {
+        return new ResponseEntity<>(productService.getAllActiveProduct(), HttpStatus.OK);
+    }
+
+    @GetMapping("/latest/{quantity}")
+    public ResponseEntity<List<Product>> getLatestTenProducts(@PathVariable("quantity") Integer quantity) {
+        return new ResponseEntity<>(productService.getLatestProducts(quantity), HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Product> getProductById(@PathVariable("id") Long id) {
+        return new ResponseEntity<>(productService.getProductById(id), HttpStatus.OK);
     }
 
     @PostMapping

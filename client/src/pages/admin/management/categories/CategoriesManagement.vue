@@ -4,14 +4,14 @@ import { storeToRefs } from 'pinia';
 import AdminTemplate from '@/layouts/admin/AdminTemplate.vue';
 import MyTableData from '@/components/table-data/MyTableData.vue';
 import MyDialogForm from '@/components/dialog-form/MyDialogForm.vue';
-import { useManagementStore } from '@/stores/managementStore';
+import { useCategoriesStore } from '@/stores/categoriesStore';
 import useManagement, { ManagementType } from '@/hooks/useManagement';
 import { formField, tableHeaders, validationSchema } from './constant';
 
-const managementStore = useManagementStore();
-const { categories } = storeToRefs(managementStore);
+const categoriesStore = useCategoriesStore();
+const { categories } = storeToRefs(categoriesStore);
 
-onMounted(async () => await managementStore.getCategories());
+onMounted(async () => await categoriesStore.getCategories());
 const {
   showDialog,
   isEdit,

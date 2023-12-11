@@ -31,8 +31,9 @@ public class Category {
     public Category() {
     }
 
-    public Category( String fullName, String description, String picture, Boolean active, Date createdAt,
+    public Category(Long id, String fullName, String description, String picture, Boolean active, Date createdAt,
             Date updatedAt) {
+        this.id = id;
         this.fullName = fullName;
         this.description = description;
         this.picture = picture;

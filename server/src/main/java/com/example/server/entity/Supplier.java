@@ -39,9 +39,9 @@ public class Supplier {
     public Supplier() {
     }
 
-    public Supplier(String fullName, String description, Boolean active, String address,
+    public Supplier(Long id, String fullName, String description, Boolean active, String address,
             String phone, String email, String url, String picture, Date createdAt, Date updatedAt) {
-
+        this.id = id;
         this.fullName = fullName;
         this.description = description;
         this.active = active;

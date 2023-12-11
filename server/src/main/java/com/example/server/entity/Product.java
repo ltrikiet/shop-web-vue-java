@@ -54,10 +54,11 @@ public class Product {
     public Product() {
     }
 
-    public Product(String fullName, String description, String picture, Supplier supplier, Category category,
+    public Product(Long id, String fullName, String description, String picture, Supplier supplier, Category category,
             Float price, Integer stocks, Float discount, Boolean discountAvailable, Integer ranking, String notes,
             Boolean active,
             Date createAt, Date updatedAt) {
+        this.id = id;
         this.fullName = fullName;
         this.description = description;
         this.picture = picture;

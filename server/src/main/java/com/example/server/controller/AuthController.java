@@ -17,10 +17,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -43,6 +40,19 @@ public class AuthController {
     @Autowired
     private JwtUtils jwtUtils;
 
+    @GetMapping("/{token}")
+    public ResponseEntity<?> getUserInfoByToken(@PathVariable("token") String token) {
+        try {
+            if (token != null && jwtUtils.validateJwtToken(token)) {
+                String email = jwtUtils.getEmailFromJwtToken(token);
+                return new ResponseEntity<>(userRepository.findByEmail(email), HttpStatus.OK);
+            }
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest loginRequest){
         try {
@@ -52,7 +62,7 @@ public class AuthController {
             String jwt = jwtUtils.generateJwtToken(authentication);
             return new ResponseEntity<>(jwt, HttpStatus.OK);
         } catch (BadCredentialsException e) {
-            throw new RuntimeException("Error: " + e.getMessage());
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.UNAUTHORIZED);
         } catch (Exception e) {
             throw new RuntimeException("Error: " + e.getMessage());
         }

@@ -7,6 +7,8 @@ import com.example.server.entity.User;
 public interface UserService {
     List<User> getAllUser();
 
+    User getUserByEmail(String email);
+
     User createUser(User user);
 
     User updateUser(Long id, User user);
