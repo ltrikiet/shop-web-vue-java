@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import { Swiper, SwiperSlide } from 'swiper/vue';
+import vTextStyle from '@/directives/vTextStyle';
 </script>
 <template>
   <div class="w-full">
     <v-row no-gutters>
       <v-col class="bg-gray-800 flex flex-col justify-center" cols="4">
         <div class="p-10">
-          <h1 class="text-5xl font-light tracking-widest mb-4">FOR THOSE WHO DARE</h1>
-          <p class="my-5 text-lg tracking-widest mb-9">
+          <h1 v-text-style="'h1'">FOR THOSE WHO DARE</h1>
+          <p class="my-5 mb-9" v-text-style="'paragraph'">
             The Republic of Gamers is a proving ground to chase excellence and push limits. Each battle scar is a badge
             of honor—the price of victory.
           </p>

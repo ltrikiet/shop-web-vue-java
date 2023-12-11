@@ -2,6 +2,7 @@
 import { onMounted } from 'vue';
 import { storeToRefs } from 'pinia';
 import { Swiper, SwiperSlide } from 'swiper/vue';
+import vTextStyle from '@/directives/vTextStyle';
 import AsyncImg from '@/components/async-img/AsyncImg.vue';
 import { useProductsStore } from '@/stores/productsStore';
 import { useCartStore } from '@/stores/cartStore';
@@ -65,8 +66,8 @@ onMounted(async () => {
       </v-col>
       <v-col cols="4">
         <div class="p-10 flex flex-col justify-center">
-          <h1 class="text-4xl font-light tracking-widest">ROG PRODUCTS TO KEEP YOUR FIGHT</h1>
-          <span class="my-5 text-xl">
+          <h2 v-text-style="'h2'">ROG PRODUCTS TO KEEP YOUR FIGHT</h2>
+          <span class="my-5" v-text-style="'paragraph'">
             We call on those who dare to venture forward and face their fears. If you pledge to be true to yourself and
             fight for those in need, the Republic of Gamers calls on you.
           </span>

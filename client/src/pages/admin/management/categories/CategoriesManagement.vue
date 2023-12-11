@@ -47,3 +47,4 @@ const {
     />
   </admin-template>
 </template>
+@/composables/useManagement

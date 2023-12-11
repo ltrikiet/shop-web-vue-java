@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { Swiper, SwiperSlide } from 'swiper/vue'
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import vTextStyle from '@/directives/vTextStyle';
 </script>
 <template>
   <div class="home-feedback">
@@ -21,10 +22,10 @@ import { Swiper, SwiperSlide } from 'swiper/vue'
       <swiper-slide v-for="n of 5" :key="n">
         <div class="home-feedback__slide">
           <h3 class="home-feedback__slide-title">“I AM SO HAPPY I STARTED DRINKING THIS COFFEE”</h3>
-          <p class="home-feedback__slide-description">
-            I am so happy I started drinking this coffee. This is the first time I have not had to
-            deal with acid issues or coffee making me feel sick after drinking it. I have not had
-            that issue once with this coffee and that's a big deal to me
+          <p class="home-feedback__slide-description" v-text-style="'paragraph'">
+            I am so happy I started drinking this coffee. This is the first time I have not had to deal with acid issues
+            or coffee making me feel sick after drinking it. I have not had that issue once with this coffee and that's
+            a big deal to me
           </p>
           <p class="home-feedback__slide-user">MASSI B.</p>
         </div>
@@ -54,7 +55,7 @@ import { Swiper, SwiperSlide } from 'swiper/vue'
       @apply font-extrabold text-6xl;
     }
     &-description {
-      @apply text-xl my-10;
+      @apply my-10;
     }
     &-user {
       @apply font-extrabold;
