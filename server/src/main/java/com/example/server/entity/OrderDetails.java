@@ -1,7 +1,5 @@
 package com.example.server.entity;
 
-import java.util.Date;
-
 import jakarta.persistence.*;
 
 @Entity

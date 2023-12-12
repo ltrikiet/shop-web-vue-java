@@ -5,7 +5,7 @@ import AdminTemplate from '@/layouts/admin/AdminTemplate.vue';
 import MyTableData from '@/components/table-data/MyTableData.vue';
 import MyDialogForm from '@/components/dialog-form/MyDialogForm.vue';
 import { useCategoriesStore } from '@/stores/categoriesStore';
-import useManagement, { ManagementType } from '@/hooks/useManagement';
+import useManagement, { ManagementType } from '@/composables/useManagement';
 import { formField, tableHeaders, validationSchema } from './constant';
 
 const categoriesStore = useCategoriesStore();

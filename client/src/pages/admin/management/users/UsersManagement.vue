@@ -4,7 +4,7 @@ import { storeToRefs } from 'pinia';
 import MyTableData from '@/components/table-data/MyTableData.vue';
 import MyDialogForm from '@/components/dialog-form/MyDialogForm.vue';
 import AdminTemplate from '@/layouts/admin/AdminTemplate.vue';
-import useManagement, { ManagementType } from '@/hooks/useManagement';
+import useManagement, { ManagementType } from '@/composables/useManagement';
 import { useUsersStore } from '@/stores/usersStore';
 import { formField, tableHeaders, validationSchema } from './constant';
 
